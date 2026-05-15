@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Centrum Zastosowań Sztucznej Inteligencji — Politechnika Wrocławska</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Oswald:wght@400;500;600&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --purple: #2D0059;
+    --purple-2: #3F1577;
+    --purple-3: #5A2E96;
+    --tech: #0693E3;
+    --tech-soft: rgba(6, 147, 227, 0.12);
+    --white: #FFFFFF;
+    --gray-bg: #F5F5F7;
+    --gray-rule: #E2E2E6;
+    --gray-rule-2: #CFCFD4;
+    --ink: #3A3A3A;
+    --ink-2: #6B6B70;
+    --ink-3: #9A9AA0;
+    --on-purple: #F7F7F7;
+    --on-purple-2: #C8B8E0;
+    --on-purple-3: #8A78A8;
+    --rule-purple: rgba(247, 247, 247, 0.16);
+    --display: "Audiowide", "Eurostile", Impact, sans-serif;
+    --nav: "Oswald", "Helvetica Neue", Arial, sans-serif;
+    --sans: "Karla", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--white); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--tech); color: var(--white); }
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
+  @media (max-width: 720px) { .wrap { padding: 0 22px; } }
+  .rule { height: 1px; background: var(--gray-rule); border: 0; margin: 0; }
+
+  /* ============= TOPBAR (on purple hero) ============= */
+  header.topbar { position: absolute; left: 0; right: 0; top: 0; z-index: 20; color: var(--on-purple); }
+  .topbar .row { display: flex; align-items: center; justify-content: space-between; min-height: 92px; padding: 24px 0; gap: 24px; }
+  .brand { display: flex; align-items: center; gap: 16px; }
+  .brand-logo { display: inline-flex; align-items: center; justify-content: center; }
+  .brand-logo img { display: block; height: 56px; width: auto; }
+  .brand-divider { width: 1px; height: 48px; background: var(--rule-purple); }
+  .brand-name { font-family: var(--nav); font-weight: 500; font-size: 12px; letter-spacing: 0.12em; line-height: 1.3; max-width: 240px; color: var(--on-purple); text-transform: uppercase; }
+  .brand-name b { font-weight: 600; color: var(--tech); display: block; }
+  @media (max-width: 720px) { .brand-logo img { height: 44px; } .brand-name { font-size: 11px; max-width: 160px; } }
+
+  nav.nav-links { display: flex; gap: 36px; font-family: var(--nav); font-weight: 500; font-size: 16px; letter-spacing: 0.06em; text-transform: uppercase; }
+  nav.nav-links a { padding: 4px 0; position: relative; transition: color 160ms ease; color: var(--on-purple); }
+  nav.nav-links a:hover { color: var(--tech); }
+  nav.nav-links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px; background: var(--tech); transform: scaleX(0); transform-origin: left; transition: transform 240ms ease; }
+  nav.nav-links a:hover::after { transform: scaleX(1); }
+
+  .topbar-cta { font-family: var(--nav); font-weight: 500; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; border: 2px solid var(--tech); color: var(--white); background: var(--tech); padding: 10px 18px; transition: background 160ms ease, color 160ms ease; }
+  .topbar-cta:hover { background: transparent; color: var(--tech); }
+  @media (max-width: 920px) { nav.nav-links { display: none; } .topbar .row { min-height: 72px; } }
+
+  /* ============= HERO ============= */
+  section.hero { background: var(--purple); color: var(--on-purple); position: relative; overflow: hidden; padding: 220px 0 120px; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 80% 25%, rgba(6,147,227,0.22) 0%, transparent 60%),
+      radial-gradient(circle 700px at 5% 90%, rgba(90, 46, 150, 0.5) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(247,247,247,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(247,247,247,0.08) 1px, transparent 1px);
+    background-size: 120px 120px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 85%);
+    pointer-events: none;
+  }
+  .hero > * { position: relative; z-index: 1; }
+
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 80px; align-items: end; }
+  @media (max-width: 920px) { .hero-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 40px; font-family: var(--nav); font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-purple-2); }
+  .hero-eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--tech); box-shadow: 0 0 0 5px var(--tech-soft); }
+
+  h1.hero-title { font-family: var(--display); font-weight: 400; font-size: clamp(48px, 7.6vw, 116px); line-height: 1.02; letter-spacing: -0.01em; margin: 0 0 36px; color: var(--white); text-wrap: balance; text-transform: uppercase; }
+  h1.hero-title b { font-weight: 400; color: var(--tech); }
+  h1.hero-title .small { display: block; font-size: 0.42em; font-family: var(--nav); font-weight: 400; letter-spacing: 0.18em; color: var(--on-purple-2); margin-top: 18px; text-transform: uppercase; }
+
+  p.hero-lede { font-family: var(--sans); font-size: 19px; line-height: 1.55; color: var(--on-purple-2); max-width: 60ch; margin: 0 0 44px; font-weight: 400; }
+
+  .hero-cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn { display: inline-flex; align-items: center; gap: 12px; padding: 14px 24px; font-family: var(--nav); font-weight: 500; font-size: 14px; letter-spacing: 0.10em; text-transform: uppercase; cursor: pointer; border: 2px solid transparent; transition: transform 160ms ease, background 160ms ease, color 160ms ease, border-color 160ms ease; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--tech); color: var(--white); border-color: var(--tech); }
+  .btn-primary:hover { background: transparent; color: var(--tech); }
+  .btn-ghost-dark { background: transparent; color: var(--on-purple); border-color: var(--rule-purple); }
+  .btn-ghost-dark:hover { border-color: var(--on-purple); color: var(--white); }
+  .btn .arrow { transition: transform 200ms ease; }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  .hero-meta { border-left: 2px solid var(--rule-purple); padding: 6px 0 6px 28px; display: flex; flex-direction: column; gap: 28px; }
+  .meta-row .label { display: block; margin-bottom: 8px; font-family: var(--nav); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--on-purple-3); }
+  .meta-row .val { font-size: 16px; color: var(--on-purple); font-family: var(--sans); }
+  .meta-row .val.lg { font-family: var(--display); font-size: 32px; line-height: 1; letter-spacing: 0; }
+  .meta-row .val.lg b { font-weight: 400; color: var(--tech); }
+
+  /* ============= SECTION HEAD ============= */
+  .section-head { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 64px; padding: 112px 0 48px; align-items: baseline; }
+  @media (max-width: 820px) { .section-head { grid-template-columns: 1fr; gap: 18px; padding: 72px 0 32px; } }
+  .section-head .label .num { display: block; font-family: var(--nav); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 12px; }
+  .section-head .label .word { font-family: var(--nav); font-weight: 500; font-size: 16px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+  .section-head h2 { font-family: var(--display); font-weight: 400; font-size: clamp(34px, 4.6vw, 64px); line-height: 1.08; letter-spacing: -0.005em; margin: 0; color: var(--ink); text-wrap: balance; text-transform: uppercase; }
+  .section-head h2 b { font-weight: 400; color: var(--tech); }
+
+  /* ============= PILLARS ============= */
+  section.pillars { padding-bottom: 96px; background: var(--white); }
+  .pillar-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--gray-rule); border-top: 1px solid var(--gray-rule); border-bottom: 1px solid var(--gray-rule); }
+  @media (max-width: 920px) { .pillar-grid { grid-template-columns: 1fr; } }
+  .pillar { background: var(--white); padding: 44px 36px 36px; display: flex; flex-direction: column; gap: 20px; position: relative; transition: background 220ms ease; min-height: 540px; }
+  .pillar:hover { background: var(--gray-bg); }
+  .pillar:hover .pillar-num { color: var(--tech); }
+  .pillar-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+  .pillar-num { font-family: var(--display); font-size: 64px; line-height: 1; color: var(--purple); transition: color 240ms ease; }
+  .pillar-tag { font-family: var(--nav); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+  .pillar-title { font-family: var(--display); font-weight: 400; font-size: 30px; line-height: 1.1; letter-spacing: 0; margin: 4px 0 0; color: var(--ink); text-transform: uppercase; }
+  .pillar-title b { font-weight: 400; color: var(--tech); }
+  .pillar-summary { color: var(--ink-2); font-size: 16px; line-height: 1.6; margin: 0; max-width: 38ch; }
+  .pillar-actions { list-style: none; padding: 0; margin: auto 0 0; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--gray-rule); }
+  .pillar-actions li { padding: 14px 0; display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: start; border-bottom: 1px dashed var(--gray-rule); font-size: 14.5px; line-height: 1.55; color: var(--ink); }
+  .pillar-actions li:last-child { border-bottom: 0; }
+  .pillar-actions .idx { font-family: var(--nav); font-size: 11px; color: var(--tech); padding-top: 3px; letter-spacing: 0.10em; font-weight: 500; }
+
+  /* ============= MISSION on gray ============= */
+  section.mission { padding: 24px 0 112px; background: var(--gray-bg); }
+  .mission-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 80px; align-items: start; }
+  @media (max-width: 920px) { .mission-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .mission-prose p { font-family: var(--sans); font-weight: 400; font-size: clamp(20px, 2.0vw, 26px); line-height: 1.45; color: var(--ink); margin: 0 0 22px; }
+  .mission-prose p b { color: var(--tech); font-weight: 600; }
+  .mission-side { border-left: 2px solid var(--gray-rule-2); padding-left: 28px; display: flex; flex-direction: column; gap: 32px; }
+  @media (max-width: 920px) { .mission-side { border-left: 0; padding-left: 0; border-top: 1px solid var(--gray-rule-2); padding-top: 32px; } }
+  .side-item .label { margin-bottom: 12px; font-family: var(--nav); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+  .side-item .val { font-size: 15.5px; color: var(--ink); line-height: 1.6; }
+  .side-item .val strong { font-weight: 600; color: var(--purple); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .chip { font-family: var(--nav); font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase; padding: 6px 12px; border: 1px solid var(--gray-rule-2); color: var(--ink-2); transition: border-color 160ms ease, color 160ms ease, background 160ms ease; }
+  .chip:hover { border-color: var(--purple); color: var(--purple); background: var(--white); }
+
+  /* ============= CONTACT (purple) ============= */
+  section.contact { background: var(--purple); color: var(--on-purple); padding: 120px 0 56px; position: relative; overflow: hidden; }
+  .contact::before {
+    content: ""; position: absolute; right: -200px; top: -150px;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle at center, rgba(6,147,227,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .contact > * { position: relative; z-index: 1; }
+  .contact h2 { font-family: var(--display); font-weight: 400; font-size: clamp(42px, 6.0vw, 88px); line-height: 1.02; letter-spacing: -0.005em; margin: 0 0 64px; color: var(--white); text-transform: uppercase; text-wrap: balance; max-width: 22ch; }
+  .contact h2 b { font-weight: 400; color: var(--tech); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; border-top: 1px solid var(--rule-purple); padding-top: 40px; }
+  @media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } }
+  .contact-col .label { font-family: var(--nav); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-purple-3); margin-bottom: 14px; }
+  .contact-col p { margin: 0 0 8px; font-size: 17px; color: var(--on-purple); }
+  .contact-col p.small { font-size: 14.5px; color: var(--on-purple-2); line-height: 1.55; }
+  .contact-col p.big { font-family: var(--display); font-size: 28px; color: var(--white); margin-bottom: 16px; }
+  .contact-col a { transition: color 160ms ease; color: var(--white); border-bottom: 1px solid var(--rule-purple); }
+  .contact-col a:hover { color: var(--tech); border-color: var(--tech); }
+  .colophon { margin-top: 80px; padding-top: 28px; border-top: 1px solid var(--rule-purple); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-family: var(--nav); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-purple-3); }
+  .colophon .brand-line { color: var(--on-purple-2); }
+  .colophon .brand-line b { color: var(--tech); font-weight: 500; }
+</style>
+</head>
+<body>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" data-screen-label="01 Hero">
+    <header class="topbar">
+      <div class="wrap row">
+        <a href="#" class="brand">
+          <span class="brand-name">Centrum Zastosowań<br/>Sztucznej <b>Inteligencji</b></span>
+        </a>
+        <nav class="nav-links">
+          <a href="#filary">Filary</a>
+          <a href="#misja">Misja</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+        <a href="#kontakt" class="topbar-cta">Współpraca</a>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        <span>Politechnika Wrocławska · jednostka międzywydziałowa</span>
+      </div>
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-title">Centrum<br/>Zastosowań<br/><b>AI</b>
+            <span class="small">Badania · Wdrożenia · Edukacja</span>
+          </h1>
+          <p class="hero-lede">Łączymy podstawowe badania nad sztuczną inteligencją z konkretnymi wdrożeniami w przemyśle, administracji i nauce — i kształcimy ludzi, którzy będą rozwijać te metody dalej.</p>
+          <div class="hero-cta-row">
+            <a href="#filary" class="btn btn-primary">
+              Poznaj filary
+              <svg class="arrow" width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12m0 0L9 1m4 4L9 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </a>
+            <a href="#kontakt" class="btn btn-ghost-dark">Nawiąż współpracę</a>
+            <a href="https://caai-sm.com" target="_blank" rel="noopener" class="btn btn-ghost-dark">Znajdź współbadacza →</a>
+          </div>
+        </div>
+        <aside class="hero-meta">
+          <div class="meta-row"><span class="label">Powołane</span><span class="val lg"><b>2026</b></span></div>
+          <div class="meta-row"><span class="label">Lokalizacja</span><span class="val">Katedra Sztucznej Inteligencji<br/>D-21, Plac Grunwaldzki 11<br/>50-384 Wrocław</span></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PILLARS ============ -->
+  <section class="pillars" id="filary" data-screen-label="02 Filary">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="label"><span class="num">§ 01 — 03</span><span class="word">Trzy filary</span></div>
+        <h2>Działalność Centrum opiera się na <b>trzech filarach</b>, które wzajemnie się napędzają.</h2>
+      </div>
+
+      <div class="pillar-grid">
+
+        <article class="pillar">
+          <div class="pillar-head">
+            <span class="pillar-num">01</span>
+            <span class="pillar-tag">Research</span>
+          </div>
+          <h3 class="pillar-title">Badania <b>naukowe</b></h3>
+          <p class="pillar-summary">Inicjowanie i prowadzenie przełomowych badań o wysokim potencjale naukowym w zakresie AI — zarówno podstawowych, jak i aplikacyjnych.</p>
+          <ul class="pillar-actions">
+            <li><span class="idx">01</span><span>Rozwój AI i metod danologii jako horyzontalnej infrastruktury badawczej.</span></li>
+            <li><span class="idx">02</span><span>Wspieranie badań interdyscyplinarnych — integracja metod, danych i modeli.</span></li>
+            <li><span class="idx">03</span><span>Wzrost zdolności do publikacji w wiodących czasopismach naukowych.</span></li>
+            <li><span class="idx">04</span><span>Pozyskiwanie finansowania: ERC, Horizon Europe, NCN.</span></li>
+          </ul>
+        </article>
+
+        <article class="pillar">
+          <div class="pillar-head">
+            <span class="pillar-num">02</span>
+            <span class="pillar-tag">Implementation &amp; Partnerships</span>
+          </div>
+          <h3 class="pillar-title">Wdrożenia<br/>i <b>współpraca</b></h3>
+          <p class="pillar-summary">Inicjowanie wdrożeń i promowanie najlepszych praktyk AI w otoczeniu społeczno-gospodarczym — od pilotaży po długoterminowe partnerstwa.</p>
+          <ul class="pillar-actions">
+            <li><span class="idx">01</span><span>Wsparcie partnerów uczelni w problematyce AI.</span></li>
+            <li><span class="idx">02</span><span>Tworzenie warunków sprzyjających rozwojowi AI.</span></li>
+            <li><span class="idx">03</span><span>Porozumienia na prace badawcze, usługowe i edukacyjne.</span></li>
+            <li><span class="idx">04</span><span>Transfer wiedzy do sektora prywatnego i publicznego.</span></li>
+          </ul>
+        </article>
+
+        <article class="pillar">
+          <div class="pillar-head">
+            <span class="pillar-num">03</span>
+            <span class="pillar-tag">Education &amp; Outreach</span>
+          </div>
+          <h3 class="pillar-title">Edukacja<br/>i <b>promocja</b></h3>
+          <p class="pillar-summary">Rozwój kadry i popularyzacja wiedzy o sztucznej inteligencji — od studenckich kół naukowych po wydarzenia dla szerokiego otoczenia.</p>
+          <ul class="pillar-actions">
+            <li><span class="idx">01</span><span>Wsparcie rozwoju kadry akademickiej i partnerów zewnętrznych.</span></li>
+            <li><span class="idx">02</span><span>Organizacja wydarzeń naukowych, edukacyjnych i biznesowych.</span></li>
+            <li><span class="idx">03</span><span>Upowszechnianie osiągnięć w tematyce Centrum.</span></li>
+            <li><span class="idx">04</span><span>Wsparcie — także finansowe — studenckich kół naukowych.</span></li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MISSION ============ -->
+  <section class="mission" id="misja" data-screen-label="03 Misja">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="label"><span class="num">§ 04</span><span class="word">Misja</span></div>
+        <h2>Po co istniejemy.</h2>
+      </div>
+      <div class="mission-grid">
+        <div class="mission-prose">
+          <p>Wierzymy, że <b>sztuczna inteligencja</b> staje się horyzontalną infrastrukturą całej nauki — tak jak kiedyś elektryczność, statystyka czy internet.</p>
+          <p>Naszą rolą jest <b>łączyć</b> badaczy, partnerów i studentów wokół wspólnych problemów, których nie da się rozwiązać w pojedynkę.</p>
+        </div>
+        <aside class="mission-side">
+          <div class="side-item">
+            <div class="label">Obszary tematyczne</div>
+            <div class="chips">
+              <span class="chip">Foundation models</span>
+              <span class="chip">ML w naukach o życiu</span>
+              <span class="chip">AI &amp; społeczeństwo</span>
+              <span class="chip">Danologia</span>
+              <span class="chip">HPC</span>
+              <span class="chip">Bezpieczeństwo AI</span>
+            </div>
+          </div>
+          <div class="side-item">
+            <div class="label">Programy zewnętrzne</div>
+            <div class="val"><strong>ERC</strong> · <strong>Horizon Europe</strong> · <strong>NCN</strong> · <strong>NCBR</strong> · <strong>FNP</strong></div>
+          </div>
+          <div class="side-item">
+            <div class="label">Dla kogo</div>
+            <div class="val">Badaczy, doktorantów, kół studenckich, firm szukających partnera B+R, instytucji publicznych.</div>
+            <a href="https://caai-sm.com" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:16px;display:inline-flex;">
+              Znajdź współbadacza
+              <svg class="arrow" width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12m0 0L9 1m4 4L9 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="kontakt" data-screen-label="04 Kontakt">
+    <div class="wrap">
+      <h2>Porozmawiajmy o <b>wspólnym projekcie</b>.</h2>
+      <div class="contact-grid">
+        <div class="contact-col">
+          <div class="label">Kontakt ogólny</div>
+          <p class="big"><a href="/cdn-cgi/l/email-protection#bbd8c1c8d2fbcbccc995dedfce95cbd7"><span class="__cf_email__" data-cfemail="d4b7aea7bd94a4a3a6fab1b0a1faa4b8">tomasz.kajdanowicz@pwr.edu.pl</span></a></p>
+          <p class="small">Współpraca badawcza, wdrożenia, edukacja, wydarzenia — wszystkie zapytania kierujemy z jednego adresu.</p>
+        </div>
+        <div class="contact-col">
+          <div class="label">Adres</div>
+          <p>Katedra Sztucznej Inteligencji</p>
+          <p>Budynek D-21, Plac Grunwaldzki 11</p>
+          <p>50-384 Wrocław</p>
+        </div>
+      </div>
+      <div class="colophon">
+         <a href="https://caai-sm.com" target="_blank" rel="noopener" style="color:var(--on-purple-2);border-bottom:1px solid var(--rule-purple);">caai-sm.com</a>
+        <span class="brand-line">Centrum Zastosowań <b>Sztucznej Inteligencji</b> · Politechnika Wrocławska</span>
+        <span>© 2026 — Wszystkie prawa zastrzeżone</span>
+      </div>
+    </div>
+  </section>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
